@@ -19,7 +19,7 @@ Fonctions à faire
 Problèmes:
 - Lorsque la pompe à eau démarre (1,5kW en tri) elle provoque des problèmes avec le LCD qui perd les pédales. En solution, je force le rafraichissement de celui ci. 
 
-Harware
+Hardware
 - Solution sur une base de Arduino
 - Affichage 16x2 (https://github.com/KiwiHC16/Piscine/blob/master/Documentation/Ecran_LCD.pdf)
 
