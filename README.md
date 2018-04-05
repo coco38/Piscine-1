@@ -5,6 +5,8 @@ Tout est parti de ce blog:
 
 http://clement.storck.me/blog/2014/08/controle-et-supervision-de-la-piscine/
 
+(Copie locale: https://github.com/KiwiHC16/Piscine/blob/master/Documentation/Piscine_Description.pdf)
+
 Fonctions implémentées
 - Suivi du PH
 - Suivi du Brome
@@ -18,7 +20,7 @@ Fonctions à faire
 
 Harware
 - Solution sur une base de Arduino
-- Affichage 16x2
+- Affichage 16x2 (https://github.com/KiwiHC16/Piscine/blob/master/Documentation/Ecran_LCD.pdf)
 
 Software
 - Protocole XPL pour controler et envoyer les informations à Jeedom
