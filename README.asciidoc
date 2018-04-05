@@ -1,11 +1,11 @@
-# Piscine
+= Piscine
 Automatiser sa piscine avec Jeedom
 
 Tout est parti de ce blog:
 
 http://clement.storck.me/blog/2014/08/controle-et-supervision-de-la-piscine/
 
-Fonctions implémentées
+== Fonctions implémentées
 - Suivi du PH
 - Suivi du Brome
 - Suivi de la temperature/Humidité du local
@@ -13,24 +13,24 @@ Fonctions implémentées
 - Suivi de la puissance/consommation de la pompe à eau
 - Suivi de la puissance/Consommation de la pompe à chaleur
 
-Fonctions à faire
+== Fonctions à faire
 - Controle du fonctionnement de la pompe à chaleur
 
-Problèmes:
+== Problèmes:
 - Lorsque la pompe à eau démarre (1,5kW en tri) elle provoque des problèmes avec le LCD qui perd les pédales. En solution, je force le rafraichissement de celui ci. 
 
-Hardware
+== Hardware
 - Solution sur une base de Arduino
 - Affichage 16x2 (https://github.com/KiwiHC16/Piscine/blob/master/Documentation/Ecran_LCD.pdf)
 
-Software
+== Software
 - Protocole XPL pour controler et envoyer les informations à Jeedom
 - Plugin Pool sur Jeedom pour le controle de la piscine
 - Source Code for the Arduino: https://github.com/KiwiHC16/Piscine/blob/master/Source/Piscine.ino
 
 Collection de documents qui ont été utilisés: https://github.com/KiwiHC16/Piscine/tree/master/Documentation
 
-Jeedom
+== Jeedom
 
 Installez le plugin XPL.
 
