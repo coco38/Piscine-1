@@ -18,7 +18,7 @@ Fonctions à faire
 
 Harware
 - Solution sur une base de Arduino
-- Affichage 16x2
+- Affichage 16x2 (https://github.com/KiwiHC16/Piscine/blob/master/Documentation/Ecran_LCD.pdf)
 
 Software
 - Protocole XPL pour controler et envoyer les informations à Jeedom
