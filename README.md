@@ -5,8 +5,6 @@ Tout est parti de ce blog:
 
 http://clement.storck.me/blog/2014/08/controle-et-supervision-de-la-piscine/
 
-(Copie locale: https://github.com/KiwiHC16/Piscine/blob/master/Documentation/Piscine_Description.pdf)
-
 Fonctions implémentées
 - Suivi du PH
 - Suivi du Brome
