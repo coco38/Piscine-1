@@ -25,3 +25,7 @@ Harware
 Software
 - Protocole XPL pour controler et envoyer les informations à Jeedom
 - Plugin Pool sur Jeedom pour le controle de la piscine
+- Source Code for the Arduino: https://github.com/KiwiHC16/Piscine/blob/master/Source/Piscine.ino
+
+Collection de documents qui ont été utilisés: https://github.com/KiwiHC16/Piscine/tree/master/Documentation
+
