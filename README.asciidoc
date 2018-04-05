@@ -1,0 +1,97 @@
+# Piscine
+Automatiser sa piscine avec Jeedom
+
+Tout est parti de ce blog:
+
+http://clement.storck.me/blog/2014/08/controle-et-supervision-de-la-piscine/
+
+Fonctions implémentées
+- Suivi du PH
+- Suivi du Brome
+- Suivi de la temperature/Humidité du local
+- Controle du fonctionnement de la pompe à eau
+- Suivi de la puissance/consommation de la pompe à eau
+- Suivi de la puissance/Consommation de la pompe à chaleur
+
+Fonctions à faire
+- Controle du fonctionnement de la pompe à chaleur
+
+Problèmes:
+- Lorsque la pompe à eau démarre (1,5kW en tri) elle provoque des problèmes avec le LCD qui perd les pédales. En solution, je force le rafraichissement de celui ci. 
+
+Harware
+- Solution sur une base de Arduino
+- Affichage 16x2 (https://github.com/KiwiHC16/Piscine/blob/master/Documentation/Ecran_LCD.pdf)
+
+Software
+- Protocole XPL pour controler et envoyer les informations à Jeedom
+- Plugin Pool sur Jeedom pour le controle de la piscine
+- Source Code for the Arduino: https://github.com/KiwiHC16/Piscine/blob/master/Source/Piscine.ino
+
+Collection de documents qui ont été utilisés: https://github.com/KiwiHC16/Piscine/tree/master/Documentation
+
+Jeedom
+
+Installez le plugin XPL.
+
+image::images/Capture_d_ecran_2018_04_05_a_11_26_19.png[]
+
+Créé un objet Controlleur (Il est important de respecter les syntaxes dans les parametres des commandes):
+
+Il est possible que l'objet Controleur soit créé automatiquement lors de la mise en route de l'arduino mais il faut faire manuellement toutes les commandes d'après mes souvenirs.
+
+image::images/Capture_d_ecran_2018_04_05_a_11_26_20.png[]
+image::images/Capture_d_ecran_2018_04_05_a_11_26_21.png[]
+image::images/Capture_d_ecran_2018_04_05_a_11_26_22.png[]
+image::images/Capture_d_ecran_2018_04_05_a_11_26_23.png[]
+
+Vous sauvegardez et sur le dashboard vous devriez avoir:
+
+image::images/Capture_d_ecran_2018_04_05_a_11_26_24.png[]
+
+* Ph: Ph mesuré qui doit être autour de 7.4. Ici la sonde est déconectée donc la valeur est stupide.
+* Redox: en milliV pour ma sonde Brome.
+* temp: Température dans le local piscine.
+* humidity: Humidité dans le local piscine.
+* Pompe Eau W: Puisssance instantanée consommée par la pompe à eau. Quelques W sont remontés quand la pompe est eteinte du fait du tarage de 0 qui n'est pas super. Mais 37W sur 1500W ca me va comme erreur.
+* Pompe Eau State: Pompe a eau active ou non en fonction de la puissance consommée.
+* idem Pompe a chaleur.
+
+Un virtuel pour indiqué la quantité de Brome que je mets dans le systeme. La valeur est historisée par Jeedom ce qui me permet d'avoir le volume et les dates.
+
+image::images/Capture_d_ecran_2018_04_05_a_11_26_25.png[]
+
+J'ai fait deux virtuels qui represente la demande de fonctionnement. Soit c'est Jeedom qui demande, soit c'est une demande manuelle de ma part.
+
+
+image::images/Capture_d_ecran_2018_04_05_a_11_26_26.png[]
+image::images/Capture_d_ecran_2018_04_05_a_11_26_27.png[]
+
+Un virtuel tempEq
+Ce virtuel permet d'avoir un temps equivalent en continu de fonctionnement par 24h. Cela me permet plus facilement de voir que la pompe à eau a tournée 10h hier et que la pompe a chaleur a fonctionnée 4h par exemple. 
+
+image::images/Capture_d_ecran_2018_04_05_a_11_26_28.png[]
+
+Avec le plugin Energie je mesure la consommation et les € dépensés...
+
+image::images/Capture_d_ecran_2018_04_05_a_11_26_29.png[]
+
+Avec le plugin Pool, je controle le tout:
+
+image::images/Capture_d_ecran_2018_04_05_a_11_26_30.png[]
+
+Mais comme il y a un bug dans le plugin XPL, je ne peux pas mettre dans le plugin Pool les commandes du controlleur XPL alors je passe par un objet qui fait les requetes http sur les commandes de l objet XPL.
+
+image::images/Capture_d_ecran_2018_04_05_a_11_26_31.png[]
+
+Pour les graphes, j'ai un virtuel qui represente les demandes de Redox et Ph Permet de tracer la demande et la valeur réelle et de comparer.
+
+image::images/Capture_d_ecran_2018_04_05_a_11_26_32.png[]
+image::images/Capture_d_ecran_2018_04_05_a_11_26_33.png[]
+
+Et la magie Jeedom. J'ai créé une vue avec graphes et objet pour suivre le fonctionnement.
+Avec le plugin Pool vous avez aussi des courbes.
+
+image::images/Capture_d_ecran_2018_04_05_a_11_26_34.png[]
+image::images/Capture_d_ecran_2018_04_05_a_11_26_35.png[]
+image::images/Capture_d_ecran_2018_04_05_a_11_26_36.png[]
